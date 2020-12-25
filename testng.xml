@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<listeners>
-		<listener
-			class-name="com.mobile.appiumUtils.RetryAnalyzer" />
-	</listeners>
-  <test name="Test">
+  <test thread-count="5" name="Test">
     <classes>
-      <class name="com.mobile.testscripts.alertViews.SampleTest"/>
+    
+   	 	 <class name="com.mobile.testscripts.alertViews.VerifyAlertTitle"/>
+   	 	  <class name="com.mobile.testscripts.alertViews.CancelAlert"/>
+   	 	   <class name="com.mobile.testscripts.alertViews.OtherAlertView"/>
+   	    <class name="com.mobile.testscripts.segmentedControls.CheckSegmentControls"/>
+      <class name="com.mobile.testscripts.segmentedControls.CheckSegmentControls"/>
+      <class name="com.mobile.testscripts.segmentedControls.SearchCustomSegments"/>
+      <class name="com.mobile.testscripts.segmentedControls.SettingsCustomSegments"/>
+    
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

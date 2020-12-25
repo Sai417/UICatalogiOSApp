@@ -6,20 +6,30 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
@@ -27,14 +37,16 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
 public class CommonAppiumUtils {
+	
 	public static IOSDriver<MobileElement> driver;
+
 	
 	//com.example.apple-samplecode.UICatalog
 
 	/*
 	 * creating the IOS Driver 
 	 */
-    @BeforeSuite
+    @BeforeMethod
 	public void iOSSimulatorSetup() throws IOException {
 		DesiredCapabilities caps= new DesiredCapabilities();
 		File classRootPath = new File(System.getProperty("user.dir"));
@@ -45,19 +57,22 @@ public class CommonAppiumUtils {
 		caps.setCapability("platformVersion", "13.3");
 		caps.setCapability("bundleId", "com.example.apple-samplecode.UICatalog");
 		caps.setCapability("app", app.getAbsolutePath());
+		caps.setCapability("fullReset", false);
+		caps.setCapability("noReset", true);
 		String appiumURL= "http://127.0.0.1:4723/wd/hub";
 		driver = new IOSDriver<MobileElement>(new URL(appiumURL), caps);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Log.startTestCase("IOS Driver Launched Sucessfully");
+		
 	}
 	
     /*
      * closing the driver, if it is not closed already
      */
-    @AfterSuite
+    @AfterMethod
     public void tearDown() {
     	if(driver!=null) {
-    		driver.close();
+    		driver.quit();
     		Log.endTestCase("IOS Driver closed Sucessfully");
     	}
     	
@@ -100,8 +115,8 @@ public class CommonAppiumUtils {
 			return isElementPresent;	
 		}catch(Exception e){
 			isElementPresent = false;
-			Log.error(e.getMessage());
-			captureScreenShot();
+			//Log.error(e.getMessage());
+			//captureScreenShot();
 			return isElementPresent;
 		} 
 	}
@@ -111,7 +126,7 @@ public class CommonAppiumUtils {
 	 * Params : MobileElement
 	 */
 	
-	public void click(MobileElement ele) throws Exception {
+	public void click(MobileElement ele) {
 		
 		try {
 			if(isMobileElementDisplayed(ele))
@@ -119,7 +134,8 @@ public class CommonAppiumUtils {
 				ele.click();
 				Log.info("Successfully clicked on element "+ele);
 			} else {
-				Log.error("Unable to identify MobileElement");
+				
+				Log.error("Unable to identify MobileElement"+ele);
 				captureScreenShot();
 				
 			}
@@ -139,7 +155,8 @@ public class CommonAppiumUtils {
 		
 		try {
 			if(isMobileElementDisplayed(ele)) {
-				ele.clear();
+				//ele.clear();
+				click(ele);
 				ele.sendKeys(keysToSend);	
 				Log.info("Successfully entered text on textfield using element "+ele);
 				//hideKeyboard();
@@ -196,5 +213,92 @@ public class CommonAppiumUtils {
 		}
 	}
 	
+	public void scrollUntillText(MobileElement ele) {
+		
+			while(!isMobileElementDisplayed(ele)) {
+				swipeDown();
+				Log.info("swipeeee.....");
+			}
+		
+	}
+	
+	public void scrollIntoView() {
+		System.out.println("sasdad");
+	}
+	
+	public void tapOnElement(MobileElement ele) {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("element", ((RemoteWebElement) ele).getId());
+			
+			driver.executeScript("mobile: tap", params);
+		} catch (Exception e) {
+			Log.error(e.getMessage());
+			captureScreenShot();
+			Assert.fail("Unable to tap on element based on " +ele);
+		}
+	}
+	
+	public void tap(MobileElement ele) {
+		Log.info("Tap on element");
+		TouchActions action = new TouchActions(driver);
+		action.singleTap(ele);
+		action.perform();
+		
 
+
+	}
+	public boolean isAlertPresent() 
+	{ 
+		try 
+		{ 
+			driver.switchTo().alert(); 
+			Log.info("Alert is present , Switched to Alert");
+			return true; 
+		}   
+		catch (NoAlertPresentException e) 
+		{ 
+			Log.info("Alert is not present");
+			return false; 
+		}   
+	} 
+	public String getAlertDescription() 
+	{ 
+		try 
+		{ 
+			return driver.switchTo().alert().getText() ;
+			
+			  
+		}   
+		catch (NoAlertPresentException Ex) 
+		{ 
+			Log.error("Alert is not present " +Ex);
+			return null; 
+		}   
+	} 
+	public void clickOnAlertAcceptBtn() {
+		driver.switchTo().alert().accept();
+		Log.info("Clicked on accept button on alert popup");
+	}
+
+	public void clickOnAlertDismissBtn() {
+		driver.switchTo().alert().dismiss();
+		Log.info("Clicked on dismiss button on alert popup");
+	}
+	public boolean isSelected(MobileElement ele) {
+		try {
+
+		String value=ele.getAttribute("value");
+		Log.info(value);
+		if(value.contains("1")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+		catch (Exception e) {
+			return false;
+		}
+
+}
 }
