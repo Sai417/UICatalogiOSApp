@@ -71,3 +71,10 @@ To run your tests simply you need to execute the following command from inside t
 1. mvn clean
 
 2. mvn test
+
+
+## Note: Things haventdone
+1. Go to Stack views. - i couldn't find the Stack Views in the app.
+2. Go to text fields and then
+a> Enter your name + text box label in below fields
+ Default ,Tinted ,Secure (Example “John Default”, “John Tinted”). - I have automated to get the Name + Label, But sendkeys is not working in the UICatalog tool, Same is working in other app , Safari and Native app. I guess issue with the UIcatalog app.
