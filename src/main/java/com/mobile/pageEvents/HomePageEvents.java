@@ -22,5 +22,12 @@ public class HomePageEvents extends CommonAppiumUtils{
 	   
 	   
    }
+   public void clickOnTextFields() {
+	   scrollUntillElement(homepageobject.textFields);
+	   click(homepageobject.textFields);
+	   Log.info("Sucessfully clicked on text fields");
+	   
+	   
+   }
    
 }

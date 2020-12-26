@@ -155,8 +155,9 @@ public class CommonAppiumUtils {
 		
 		try {
 			if(isMobileElementDisplayed(ele)) {
-				//ele.clear();
-				click(ele);
+				ele.clear();
+				//click(ele);
+			
 				ele.sendKeys(keysToSend);	
 				Log.info("Successfully entered text on textfield using element "+ele);
 				//hideKeyboard();
@@ -213,11 +214,11 @@ public class CommonAppiumUtils {
 		}
 	}
 	
-	public void scrollUntillText(MobileElement ele) {
+	public void scrollUntillElement(MobileElement ele) {
 		
 			while(!isMobileElementDisplayed(ele)) {
 				swipeDown();
-				Log.info("swipeeee.....");
+				Log.info("Scrolling down to find the element");
 			}
 		
 	}
