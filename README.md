@@ -78,3 +78,4 @@ To run your tests simply you need to execute the following command from inside t
 2. Go to text fields and then
 a> Enter your name + text box label in below fields
  Default ,Tinted ,Secure (Example “John Default”, “John Tinted”). - I have automated to get the Name + Label, But sendkeys is not working in the UICatalog tool, Same is working in other app , Safari and Native app. I guess issue with the UIcatalog app.
+   I have commented that piece of code ->src/main/java/com/mobile/pageEvents/TextFieldEvents.java
