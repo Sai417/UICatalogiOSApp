@@ -8,7 +8,14 @@ import com.mobile.pageObjects.TextFieldspageObjects;
 public class TextFieldEvents extends CommonAppiumUtils{
 	TextFieldspageObjects TextFieldspageObjects = new TextFieldspageObjects(driver);
 	
-	public boolean enterText() {
+	
+	/**
+	 * To enter and verify the values in the Text fields (Name + Section Name)
+	 * verify same values are entered or not ?
+	 * not able to send keys in UIcatalog app.
+	 * @return : Booleans
+	 */
+	public boolean enterValueTextFields() {
 		int noOfElements = TextFieldspageObjects.textFieldbox.size();
 		for(int i=0;i<noOfElements;i++) {
 			String Header = getText(TextFieldspageObjects.textFieldName.get(i));

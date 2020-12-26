@@ -11,8 +11,8 @@ public class SettingsCustomSegments extends CommonAppiumUtils {
 	HomePageEvents HomePageEventsObj;
 	SegmentedControlEvents SegmentedControlEventsObj;
 	
-	@Test
-	public void VerifyToolSegmentControls() {
+	@Test(description = "verify Settings icon in custom Segmented contrls is selected or not")
+	public void verifySettingsCustomSegments() {
 		
 		HomePageEventsObj = new HomePageEvents();
 		SegmentedControlEventsObj= new SegmentedControlEvents();

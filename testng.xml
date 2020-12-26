@@ -4,17 +4,17 @@
   <test thread-count="5" name="Test">
     <classes>
     
-   	  <class name="com.mobile.testscripts.alertViews.VerifyAlertTitle"/>
+   	  <class name="com.mobile.testscripts.alertViews.AlertTitle"/>
    	  <class name="com.mobile.testscripts.alertViews.CancelAlert"/>
    	  <class name="com.mobile.testscripts.alertViews.OtherAlertView"/>
-   	  <class name="com.mobile.testscripts.segmentedControls.VerifyDefaultsSegmentedControls"/>
-   	  <class name="com.mobile.testscripts.segmentedControls.CheckSegmentControls"/>
-   	  <class name="com.mobile.testscripts.segmentedControls.ToolsSegmentControls"/>
-      <class name="com.mobile.testscripts.segmentedControls.SearchSegmentControls"/>
+   	  <class name="com.mobile.testscripts.segmentedControls.DefaultValuesSegmentedControls"/>
+   	  <class name="com.mobile.testscripts.segmentedControls.CheckTintedSegments"/>
+   	  <class name="com.mobile.testscripts.segmentedControls.ToolsTintedSegments"/>
+      <class name="com.mobile.testscripts.segmentedControls.SearchTintedSegments"/>
       <class name="com.mobile.testscripts.segmentedControls.SearchCustomSegments"/>
       <class name="com.mobile.testscripts.segmentedControls.SettingsCustomSegments"/>
       <class name="com.mobile.testscripts.segmentedControls.DoneCustomSegments"/>
-      <class name="com.mobile.testscripts.textFields.ValidateTextFields"/>
+      <class name="com.mobile.testscripts.textFields.TextFieldsValues"/>
     
       
     </classes>

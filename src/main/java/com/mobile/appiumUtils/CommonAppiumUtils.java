@@ -33,11 +33,10 @@ public class CommonAppiumUtils {
 	
 	public static IOSDriver<MobileElement> driver;
 
-	
-	//com.example.apple-samplecode.UICatalog
 
-	/*
-	 * creating the IOS Driver 
+	/**
+	 * creating the IOS Driver , Selecting IOSDriver instead of  appium driver, since automating only on iOS device
+	 * Runs before every test case and Intilaize the driver.
 	 */
     @BeforeMethod
 	public void iOSSimulatorSetup() throws IOException {
@@ -59,7 +58,7 @@ public class CommonAppiumUtils {
 		
 	}
 	
-    /*
+    /**
      * closing the driver, if it is not closed already
      */
     @AfterMethod
@@ -70,10 +69,11 @@ public class CommonAppiumUtils {
     	}
     	
     }
-    /*
+    
+    /***
      * this method is used to capture screenshot
      * 
-     * return type String :Image name
+     * @return type String :Image name
      */
 	
     public String captureScreenShot() {
@@ -92,11 +92,11 @@ public class CommonAppiumUtils {
 		}
 		return destFile;
 	}
- /*
+  /***
   * wait & verify for the mobile element is displayed 
   * 
-  * params : mobileElement
-  * return type: boolean
+  * @params : mobileElement
+  * @return : boolean
   */
 	public boolean isMobileElementDisplayed(MobileElement ele) {
 		boolean isElementPresent;
@@ -113,10 +113,10 @@ public class CommonAppiumUtils {
 			return isElementPresent;
 		} 
 	}
-	/*
+	/**
 	 * Click on the element
 	 * 
-	 * Params : MobileElement
+	 * @params : MobileElement
 	 */
 	
 	public void click(MobileElement ele) {
@@ -137,11 +137,11 @@ public class CommonAppiumUtils {
 				Log.error(e.getMessage());
 		}
 	}
-	/*
+	/**
 	 * Send keys to the particular element
 	 * 
-	 * Params : MobileElement & Keys
-	 * Return : String
+	 * @params : MobileElement & Keys
+	 * @return : String
 	 */
 	
 	public String sendKeys(MobileElement ele, String keysToSend) {
@@ -163,11 +163,11 @@ public class CommonAppiumUtils {
 		return keysToSend;
 	}
 	
-	/*
+	/**
 	 * get the Text from the element
 	 * 
-	 * Params : MobileElement
-	 * Return : String 
+	 * @params : MobileElement
+	 * @return : String 
 	 */
 	
 	public String getText(MobileElement ele)
@@ -187,9 +187,10 @@ public class CommonAppiumUtils {
 		return text;
 	}
 	
-	/*
+	/**
 	 * Swipe down based on the coordinates
 	 */
+	
 	@SuppressWarnings("rawtypes")
 	public void swipeDown() {	
 		try {
@@ -207,41 +208,25 @@ public class CommonAppiumUtils {
 		}
 	}
 	
+	/**
+	 * scroll until the element find
+	 */
 	public void scrollUntillElement(MobileElement ele) {
 		
 			while(!isMobileElementDisplayed(ele)) {
 				swipeDown();
-				Log.info("Scrolling down to find the element");
+				Log.info("Scrolling to find the element");
 			}
 		
 	}
 	
-	public void scrollIntoView() {
-		System.out.println("sasdad");
-	}
 	
-	public void tapOnElement(MobileElement ele) {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("element", ((RemoteWebElement) ele).getId());
-			
-			driver.executeScript("mobile: tap", params);
-		} catch (Exception e) {
-			Log.error(e.getMessage());
-			captureScreenShot();
-			Assert.fail("Unable to tap on element based on " +ele);
-		}
-	}
-	
-	public void tap(MobileElement ele) {
-		Log.info("Tap on element");
-		TouchActions action = new TouchActions(driver);
-		action.singleTap(ele);
-		action.perform();
-		
 
 
-	}
+/**
+ * to Verify alert is present or not, if alert is present Switch to alert
+ * @return : Boolean
+ */
 	public boolean isAlertPresent() 
 	{ 
 		try 
@@ -256,6 +241,13 @@ public class CommonAppiumUtils {
 			return false; 
 		}   
 	} 
+	
+	/**
+	 * This method is used to get the Alert description
+	 * 
+	 * @return : String
+	 * 
+	 */
 	public String getAlertDescription() 
 	{ 
 		try 
@@ -264,21 +256,34 @@ public class CommonAppiumUtils {
 			
 			  
 		}   
-		catch (NoAlertPresentException Ex) 
+		catch (NoAlertPresentException e) 
 		{ 
-			Log.error("Alert is not present " +Ex);
+			Log.error("Alert is not present " +e);
 			return null; 
 		}   
 	} 
+	
+	/**
+	 * This method is used to click on Accept on Alert
+	 */
 	public void clickOnAlertAcceptBtn() {
 		driver.switchTo().alert().accept();
 		Log.info("Clicked on accept button on alert popup");
 	}
-
+	
+	/**
+	 * This method is used to click on Accept on Alert
+	 */
 	public void clickOnAlertDismissBtn() {
 		driver.switchTo().alert().dismiss();
 		Log.info("Clicked on dismiss button on alert popup");
 	}
+	
+	/**
+	 * Verify mobile element is selected or not based on value, If value =1. selected or else not selected
+	 * @param :Mobile Element
+	 * @return : boolean
+	 */
 	public boolean isSelected(MobileElement ele) {
 		try {
 

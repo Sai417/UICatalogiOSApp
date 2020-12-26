@@ -11,8 +11,8 @@ public class CancelAlert extends CommonAppiumUtils{
 	private AlertViewsEvents alertViewObj;
 	private HomePageEvents HomePageEventsObj;
 	
-	@Test
-	public void verifyAlertTitle() {
+	@Test(description = "Click cancel alert and verify alert is closed or not")
+	public void verifyCancelAlert() {
 		HomePageEventsObj = new HomePageEvents();
 		alertViewObj = new AlertViewsEvents();
 		HomePageEventsObj.clickOnAlertView();

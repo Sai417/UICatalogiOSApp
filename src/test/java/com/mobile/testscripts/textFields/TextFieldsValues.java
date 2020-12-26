@@ -1,22 +1,22 @@
 package com.mobile.testscripts.textFields;
 
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import com.mobile.appiumUtils.CommonAppiumUtils;
 import com.mobile.pageEvents.HomePageEvents;
 import com.mobile.pageEvents.TextFieldEvents;
 
-public class ValidateTextFields extends CommonAppiumUtils{
+public class TextFieldsValues extends CommonAppiumUtils{
 	HomePageEvents HomePageEventsObj;
 	TextFieldEvents TextFieldEventsObj;
 	
-	@Test
-	public void testtt() {
+	@Test(description = "Enter the values in the Text Fields and verify the values")
+	public void verifyTextFieldsValues() {
 		
 	HomePageEventsObj = new HomePageEvents();
 	TextFieldEventsObj = new TextFieldEvents();
 	HomePageEventsObj.clickOnTextFields();
-	TextFieldEventsObj.enterText();
-	
+	AssertJUnit.assertTrue(TextFieldEventsObj.enterValueTextFields());
 	}
 }

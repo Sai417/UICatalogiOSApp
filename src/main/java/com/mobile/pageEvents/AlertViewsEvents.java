@@ -8,21 +8,19 @@ public class AlertViewsEvents extends CommonAppiumUtils {
 	
 	public AlertViewsPageObjects alertViewsPageObject = new AlertViewsPageObjects(driver);
 	
-//	public AlertViewsEvents() {
-//		
-//		alertViewsPageObject= new AlertViewsPageObjects();
-//		PageFactory.initElements(new AppiumFieldDecorator(driver),this);
-//		
-//	}
-	
-	
+	/**
+	 * click on OK /Cancel in the Alert views section
+	 */
 	   public void clickOnOKCancelAlerts() {
 
 		   click(alertViewsPageObject.okayCancel);
-		   Log.info("Sucessfully clicked on okay cancel alertview");
+		   Log.info("Sucessfully clicked on okay cancel alert view");
 		   
 		   
 	   }
+	   /**
+	    * click on the Others in Alert view section
+	    */
 	   public void clickOnOtherAlerts() {
 
 		   click(alertViewsPageObject.other);
@@ -30,7 +28,10 @@ public class AlertViewsEvents extends CommonAppiumUtils {
 		   
 		   
 	   }
-	  
+	  /**
+	   * This method will get the Alert Message/ Description
+	   * @return : String 
+	   */
 
 	   public String okCancelAlertMessage() {
 		   if(isAlertPresent()) {
@@ -43,6 +44,10 @@ public class AlertViewsEvents extends CommonAppiumUtils {
 		   
 	   }
 	   
+	   /**
+	    * Dismiss the alert and verify alert is present or not.
+	    * @return: Boolean
+	    */
 	   public boolean closeAlert() {
 		   if(isAlertPresent()) {
 			   clickOnAlertDismissBtn();
@@ -54,7 +59,10 @@ public class AlertViewsEvents extends CommonAppiumUtils {
 		   }
 		   return false;
 	   }
-	   
+	   /**
+	    * Select Option two in the alert and verify alert is getting closed or not.
+	    * @return ; boolean
+	    */
 	   public boolean selectOptionOnAlert() {
 		   if(isAlertPresent()) {
 			  click(alertViewsPageObject.choiceTwo);
@@ -66,17 +74,6 @@ public class AlertViewsEvents extends CommonAppiumUtils {
 	   }
 		   return false;
 	   }
-//	public void printalltext() {
-//		Log.info("Hellooo...");
-//		click(alertViewsPageObject.okayCancel);
-//	
-//	Log.info("Okcancel alert"+	getAlertDescription());
-//		click(alertViewsPageObject.cancel);
-//	click(alertViewsPageObject.other);
-//
-//	Log.info("others alert"+	getAlertDescription());
-//
-//	
-//	}
+
 }
 

@@ -11,8 +11,8 @@ public class SearchCustomSegments extends CommonAppiumUtils{
 	HomePageEvents HomePageEventsObj;
 	SegmentedControlEvents SegmentedControlEventsObj;
 	
-	@Test
-	public void VerifyToolSegmentControls() {
+	@Test(description = "verify Serch icon in Custom Segment contrls is selected or not")
+	public void VerifySearchSegmentControls() {
 		
 		HomePageEventsObj = new HomePageEvents();
 		SegmentedControlEventsObj= new SegmentedControlEvents();

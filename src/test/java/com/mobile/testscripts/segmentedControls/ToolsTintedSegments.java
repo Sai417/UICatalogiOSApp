@@ -7,20 +7,20 @@ import com.mobile.appiumUtils.CommonAppiumUtils;
 import com.mobile.pageEvents.HomePageEvents;
 import com.mobile.pageEvents.SegmentedControlEvents;
 
-public class SearchSegmentControls extends CommonAppiumUtils{
+public class ToolsTintedSegments extends CommonAppiumUtils{
 	HomePageEvents HomePageEventsObj;
 	SegmentedControlEvents SegmentedControlEventsObj;
 	
-	@Test
-	public void VerifyToolSegmentControls() {
+	@Test(description = "verify Tools icon in Tinted Segmented contrls is selected or not")
+	public void VerifyToolsTintedSegments() {
 		
 		HomePageEventsObj = new HomePageEvents();
 		SegmentedControlEventsObj= new SegmentedControlEvents();
 		HomePageEventsObj.clickOnSegmentedControls();
 		SegmentedControlEventsObj.clickOnTintedTools();
-		SegmentedControlEventsObj.clickOnTintedSearch();
-		AssertJUnit.assertTrue(SegmentedControlEventsObj.isSearchTintedSelectedDefault());
+		AssertJUnit.assertTrue(SegmentedControlEventsObj.isToolsSelected());
 		
 
+				
 }
 }

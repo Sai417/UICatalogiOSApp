@@ -11,9 +11,8 @@ public class DoneCustomSegments extends CommonAppiumUtils{
 	HomePageEvents HomePageEventsObj;
 	SegmentedControlEvents SegmentedControlEventsObj;
 	
-	@Test
-	public void VerifyToolSegmentControls() {
-		
+	@Test(description = "verify Done icon in custom Segment contrls is selected or not")
+	public void VerifyDoneCustomSegments() {
 		HomePageEventsObj = new HomePageEvents();
 		SegmentedControlEventsObj= new SegmentedControlEvents();
 		HomePageEventsObj.clickOnSegmentedControls();

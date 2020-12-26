@@ -11,8 +11,8 @@ public class OtherAlertView extends CommonAppiumUtils{
 	private AlertViewsEvents alertViewObj;
 	private HomePageEvents HomePageEventsObj;
 	
-	@Test
-	public void verifyAlertTitle() {
+	@Test(description = "click on Option Two in alert and verify alert is closed or not")
+	public void clickOnOptionTwo() {
 		HomePageEventsObj = new HomePageEvents();
 		alertViewObj = new AlertViewsEvents();
 		HomePageEventsObj.clickOnAlertView();
