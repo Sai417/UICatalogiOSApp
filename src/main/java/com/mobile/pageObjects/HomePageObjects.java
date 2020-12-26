@@ -22,6 +22,8 @@ public class HomePageObjects{
 	@iOSXCUITFindBy(accessibility  = "Segmented Controls")
 	public MobileElement segmentedControls;
 	
+	@iOSXCUITFindBy(accessibility  = "Picker View")
+	public MobileElement pickerView;
 	
 	@iOSXCUITFindBy(accessibility  = "Text Fields")
 	public MobileElement textFields;

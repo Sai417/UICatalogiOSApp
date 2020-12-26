@@ -10,12 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -24,12 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
@@ -111,7 +104,7 @@ public class CommonAppiumUtils {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			MobileElement screenWait = (MobileElement) wait.until(ExpectedConditions.visibilityOf(ele));
 			isElementPresent = screenWait.isDisplayed();
-			Log.info("MobileElement "+ele+" is displayed");
+			Log.info("MobileElement  is displayed");
 			return isElementPresent;	
 		}catch(Exception e){
 			isElementPresent = false;
@@ -290,7 +283,6 @@ public class CommonAppiumUtils {
 		try {
 
 		String value=ele.getAttribute("value");
-		Log.info(value);
 		if(value.contains("1")) {
 			return true;
 		}else {

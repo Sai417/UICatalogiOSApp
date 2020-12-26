@@ -1,12 +1,8 @@
 package com.mobile.pageEvents;
 
-import org.openqa.selenium.support.PageFactory;
-
 import com.mobile.appiumUtils.CommonAppiumUtils;
 import com.mobile.appiumUtils.Log;
 import com.mobile.pageObjects.AlertViewsPageObjects;
-
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class AlertViewsEvents extends CommonAppiumUtils {
 	

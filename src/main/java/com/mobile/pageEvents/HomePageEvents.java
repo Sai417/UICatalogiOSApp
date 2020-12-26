@@ -22,6 +22,14 @@ public class HomePageEvents extends CommonAppiumUtils{
 	   
 	   
    }
+   public void clickOnPickerView() {
+
+	   click(homepageobject.pickerView);
+	   Log.info("Sucessfully clicked on Segmented Controlls");
+	   
+	   
+   }
+   
    public void clickOnTextFields() {
 	   scrollUntillElement(homepageobject.textFields);
 	   click(homepageobject.textFields);

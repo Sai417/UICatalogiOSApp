@@ -34,7 +34,7 @@ public class SegmentedControlsPageObjects {
 	@iOSXCUITFindBy(xpath  = "(//XCUIElementTypeButton[@name=\"Search\"])[2]")
 	public MobileElement tintedSearch;
 //	(//XCUIElementTypeButton[@name="Tools"])[2]
-	@iOSXCUITFindBy(xpath  = "((//XCUIElementTypeButton[@name=\"Tools\"])[2]")
+	@iOSXCUITFindBy(xpath  = "(//XCUIElementTypeButton[@name=\"Tools\"])[2]")
 	public MobileElement tintedTools;
 
 }
