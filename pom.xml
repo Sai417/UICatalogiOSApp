@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>UICatalog</groupId>
   <artifactId>UICatalogiOSApp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <build>
 		<plugins>
 
@@ -34,7 +34,9 @@
 		</plugins>
 	</build>
   
-  
+	<name>UIcatlog</name>
+	<description>Sample Project</description>
+	<url>https://github.com/Sai417/UICatalogiOSApp</url>
   <dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
