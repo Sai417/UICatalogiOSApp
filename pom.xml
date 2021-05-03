@@ -37,6 +37,26 @@
 	<name>UIcatlog</name>
 	<description>Sample Project</description>
 	<url>https://github.com/Sai417/UICatalogiOSApp</url>
+	<licenses>
+  <license>
+    <name>MIT License</name>
+    <url>http://www.opensource.org/licenses/mit-license.php</url>
+  </license>
+</licenses>
+	<scm>
+  <connection>scm:git:git://github.com/Sai417/UICatalogiOSApp.git</connection>
+  <developerConnection>scm:git:ssh://github.com:Sai417/UICatalogiOSApp.git</developerConnection>
+  <url>https://github.com/Sai417/UICatalogiOSApp/main</url>
+</scm>
+	
+	<developers>
+    <developer>
+      <name>Sujith</name>
+      <email>bssr417@gmail.com</email>
+      <organization>Sujith</organization>
+      <organizationUrl>http://www.google.com</organizationUrl>
+    </developer>
+  </developers>
   <dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
